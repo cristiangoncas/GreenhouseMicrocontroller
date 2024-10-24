@@ -36,6 +36,9 @@ unsigned long timeoutMillis = 60000;
 dht11 DHT11;
 struct tm timeinfo;
 
+// TODO: Extract logic into separate files, network, sensors, api, etc.
+// TODO: Improve error handling. The greenhouse should never fall under the defined parameters to avoid killing the plants.
+
 void setup() {
   Serial.begin(9600);
   pinMode(heaterPin, OUTPUT);
