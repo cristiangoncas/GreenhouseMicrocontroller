@@ -161,8 +161,7 @@ void handleTemperature(int temperature) {
   int heaterStatus = digitalRead(heaterPin);
   if (temperature >= maxTemp && heaterStatus == HIGH) {
     String logs[][2] = {
-      {"heater", "Off"},
-      {"tempRead", String(temperature)}
+      {"heater", "Off"}
     };
     int numLogs = sizeof(logs) / sizeof(logs[0]);
     sendLog(logs, numLogs);
@@ -170,8 +169,7 @@ void handleTemperature(int temperature) {
     Serial.println("Turn off heater");
   } else if (temperature <= minTemp && heaterStatus == LOW) {
     String logs[][2] = {
-      {"heater", "On"},
-      {"tempRead", String(temperature)}
+      {"heater", "On"}
     };
     int numLogs = sizeof(logs) / sizeof(logs[0]);
     sendLog(logs, numLogs);
@@ -179,8 +177,7 @@ void handleTemperature(int temperature) {
     Serial.println("Turn on heater");
   } else if (temperature >= minTemp+1 && heaterStatus == HIGH) {
     String logs[][2] = {
-      {"heater", "Off"},
-      {"tempRead", String(temperature)}
+      {"heater", "Off"}
     };
     int numLogs = sizeof(logs) / sizeof(logs[0]);
     sendLog(logs, numLogs);
@@ -196,14 +193,14 @@ bool isNight() {
   int sec = timeinfo.tm_sec;
   if (hour >= nightTime || hour < morningTime) {
     String logs[][2] = {
-      {"isNight", String(hour) + ":" + String(min) + ":" + String(sec) + " - Yes"}
+      {"isNight", String(1)}
     };
     int numLogs = sizeof(logs) / sizeof(logs[0]);
     sendLog(logs, numLogs);
     return true;
   } else {
     String logs[][2] = {
-      {"isNight", String(hour) + ":" + String(min) + ":" + String(sec) + " - No"}
+      {"isNight", String(0)}
     };
     int numLogs = sizeof(logs) / sizeof(logs[0]);
     sendLog(logs, numLogs);
